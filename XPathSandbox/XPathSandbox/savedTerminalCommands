@@ -1,0 +1,74 @@
+(base) C:\Users\jaykl\GitHub_Local\_Scraping\XPathSandbox\XPathSandbox>
+activate ScrapyEnviornment
+
+(ScrapyEnviornment) C:\Users\jaykl\GitHub_Local\_Scraping\XPathSandbox\XPathSandbox>
+scrapy shell https://www3.watch-series.live/ -c '(response.status, response.url)'
+
+In [1]: wsLister = response.css('.category-videos')
+
+In [2]: wsLister
+Out[2]: [<Selector xpath="descendant-or-self::*[@class and contains(concat(' ', normalize-space(@class), ' '), ' category-videos ')]" data='<ul class="video-block-container open-vi'>]
+
+In [3]: wsLister.css('.sdimg a::attr("href")').extract()
+Out[3]: ['/series/say-yes-to-the-dress-season-12-episode-4',
+ '/series/the-apprentice-season-5-episode-12',
+ '/series/say-yes-to-the-dress-season-10-episode-13',
+ '/series/say-yes-to-the-dress-season-9-episode-12',
+ '/series/the-apprentice-season-4-episode-13',
+ '/series/say-yes-to-the-dress-season-3-episode-13',
+ '/series/say-yes-to-the-dress-season-2-episode-1',
+ '/series/say-yes-to-the-dress-season-1-episode-6',
+ '/series/alternatino-with-arturo-castro-season-1-episode-6',
+ '/series/drunk-history-season-6-episode-14',
+ '/series/ambitions-season-1-episode-6',
+ '/series/late-show-with-stephen-colbert-season-4-episode-180',
+ '/series/american-ninja-warrior-season-11-episode-8',
+ '/series/house-rules-season-7-episode-43',
+ '/series/ufo-season-1-episode-26',
+ '/series/ufo-hunters-season-3-episode-7',
+ '/series/ufo-hunters-season-2-episode-13',
+ '/series/ufo-hunters-season-1-episode-13',
+ '/series/outdaughtered-season-5-episode-7',
+ '/series/mean-mums-season-1-episode-2',
+ '/series/miz-and-mrs-season-1-episode-15',
+ '/series/web-of-lies-season-6-episode-1',
+ '/series/chrisley-knows-best-season-7-episode-10',
+ '/series/america-unearthed-season-4-episode-10',
+ '/series/the-handmaids-tale-season-3-episode-10',
+ '/series/tales-season-2-episode-4',
+ '/series/ink-master-season-12-episode-7',
+ '/series/americas-got-talent-season-14-episode-9',
+ '/series/the-amazing-race-canada-season-7-episode-4',
+ '/series/24-hours-in-a-e-season-18-episode-12']
+
+In [4]: wsLister.css('.home_video_title div::text').extract()
+Out[4]: [' Say Yes to the Dress - Season 12',
+ ' The Apprentice - Season 5',
+ ' Say Yes to the Dress - Season 10',
+ ' Say Yes to the Dress - Season 9',
+ ' The Apprentice - Season 4',
+ ' Say Yes to the Dress - Season 3',
+ ' Say Yes to the Dress - Season 2',
+ ' Say Yes to the Dress - Season 1',
+ ' Alternatino with Arturo Castro - Season 1',
+ ' Drunk History - Season 6',
+ ' Ambitions - Season 1',
+ ' Late Show with Stephen Colbert - Season 4',
+ ' American Ninja Warrior - Season 11',
+ ' House Rules - Season 7',
+ ' UFO - Season 1',
+ ' UFO Hunters - Season 3',
+ ' UFO Hunters - Season 2',
+ ' UFO Hunters - Season 1',
+ ' OutDaughtered - Season 5',
+ ' Mean Mums - Season 1',
+ ' Miz and Mrs - Season 1',
+ ' Web of Lies - Season 6',
+ ' Chrisley Knows Best - Season 7',
+ ' America Unearthed - Season 4',
+ " The Handmaid's Tale - Season 3",
+ ' Tales - Season 2',
+ ' Ink Master - Season 12',
+ " America's Got Talent - Season 14 ",
+ ' The Amazing Race Canada - Season 7',
+ ' 24 Hours In A & E - Season 18']
